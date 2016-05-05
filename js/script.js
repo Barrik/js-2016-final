@@ -7,51 +7,58 @@ var lists = document.getElementsByClassName('dropdown-content');
 
 search = {
   whether: "yes",
-  show: "yes",
+  occupants: 1,
+  beds: 1,
 };
 
 room1 = {
+  number: 1,
   whether: "yes",
+  occupants: 6,
+  beds: 2,
 };
 room2 = {
+  number: 2,
   whether: "yes",
+  occupants: 2,
+  beds: 1,
 };
 room3 = {
+  number: 3,
   whether: "yes",
+  occupants: 2,
+  beds: 1,
 };
 room4 = {
+  number: 4,
   whether: "no",
+  occupants: 4,
+  beds: 2,
 };
 room5 = {
+  number: 5,
   whether: "no",
+  occupants: 3,
+  beds: 2,
 };
 room6 = {
+  number: 6,
   whether: "no",
+  occupants: 3,
+  beds: 2,
 };
 
-// d.querySelector('#showHideButton').addEventListener('click', function() {
-//   document.getElementById('showHideContent').classList.toggle("show");
-// });
 
-console.log(lists);
 function toggleLists(num) {
   buttons[num].addEventListener('click', function() {
-    console.log("You clicked button #" + num);
+    // console.log("You clicked button #" + num);
     lists[num].classList.toggle('show');
   })
 }
 
 for (var i = 0; i < buttons.length; i++) {
   toggleLists(i);
-  // buttons[i].addEventListener('click', toggleLists, i);
 };
-// console.log(d.getElementsByClassName('dropdown-content'));
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-// function toggleDropdown() {
-//     document.getElementById("myDropdown").classList.toggle("show");
-// }
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
@@ -68,48 +75,87 @@ window.onclick = function(event) {
   }
 }
 
-d.querySelector('#testButton').addEventListener('click', function() {
-  console.log(search);
+// d.querySelector('#testButton').addEventListener('click', function() {
+//   console.log(search);
+// });
+
+
+// ~~~~~OCCUPANTS
+var occupantsCount = d.querySelector('#occupantsCount')
+d.querySelector('#oneOccupants').addEventListener('click', function() {
+  search.occupants = 1;
+  occupantsCount.innerHTML = 1;
+});
+d.querySelector('#twoOccupants').addEventListener('click', function() {
+  search.occupants = 2;
+  occupantsCount.innerHTML = 2;
+});
+d.querySelector('#threeOccupants').addEventListener('click', function() {
+  search.occupants = 3;
+  occupantsCount.innerHTML = 3;
+});
+d.querySelector('#fourOccupants').addEventListener('click', function() {
+  search.occupants = 4;
+  occupantsCount.innerHTML = 4;
+});
+d.querySelector('#fiveOccupants').addEventListener('click', function() {
+  search.occupants = 5;
+  occupantsCount.innerHTML = 5;
+});
+d.querySelector('#sixOccupants').addEventListener('click', function() {
+  search.occupants = 6;
+  occupantsCount.innerHTML = 6;
 });
 
-d.querySelector('#show').addEventListener('click', function() {
-  console.log("clicked " + this.innerHTML);
-  search.show = "yes";
-});
 
-d.querySelector('#dontShow').addEventListener('click', function() {
-  console.log("clicked " + this.innerHTML);
-  search.show = "no";
-});
+// ~~~~~YES/NO
+// d.querySelector('#yes').addEventListener('click', function() {
+//   search.whether = "yes";
+// });
+// d.querySelector('#no').addEventListener('click', function() {
+//   search.whether = "no";
+// });
+
+
+// ~~~~~SEARCH
+function show(x) {
+  d.querySelector(x).classList.add('show');
+  d.querySelector(x).classList.remove('hide');
+}
+function hide(x) {
+  d.querySelector(x).classList.add('hide');
+  d.querySelector(x).classList.remove('show');
+}
 
 d.querySelector('#searchButton').addEventListener('click', function() {
-  for (var i = 0; i < room.length; i++) {
-    console.log(room[i]);
-    if (room[i].whether === search.whether) {
-      room[i].classList.add('show');
-      room[i].classList.remove('hide');
-    } else if (room[i].whether !== search.whether) {
-      room[i].classList.add('hide');
-      room[i].classList.remove('show');
-    }
+  if (search.occupants <= room1.occupants) {
+    show('#room1')
+  } else {
+    hide('#room1')
+  };
+  if (search.occupants <= room2.occupants) {
+    show('#room2')
+  } else {
+    hide('#room2')
+  };
+  if (search.occupants <= room3.occupants) {
+    show('#room3')
+  } else {
+    hide('#room3')
+  };
+  if (search.occupants <= room4.occupants) {
+    show('#room4')
+  } else {
+    hide('#room4')
+  };
+  if (search.occupants <= room5.occupants) {
+    show('#room5')
+  } else {
+    hide('#room5')
+  };
+  if (search.occupants <= room6.occupants) {
+    show('#room6')
+  } else {
+    hide('#room6')
   };
 });
-
-// d.querySelector('#searchButton').addEventListener('click', function() {
-//   console.log("SEARCHING");
-//   if (search.show === "yes") {
-//     for (var i = 0; i < room.length; i++) {
-//       room[i].classList.add('show');
-//       room[i].classList.remove('hide');
-//     };
-//   } else if (search.show === "no") {
-//     console.log("hiding rooms");
-//     for (var i = 0; i < room.length; i++) {
-//       room[i].classList.add('hide');
-//       room[i].classList.remove('show');
-//     };
-//   };
-//   else {
-//     alert('ERROR: "Show" not defined');
-//   }
-// });

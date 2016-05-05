@@ -10,40 +10,47 @@
   <title>Test Final</title>
 </head>
 <body>
-  <div class="dropdown" id="showHide">
-    <button id="showHideButton" class="dropbtn">Show/Hide</button>
-    <div id="showHideContent" class="dropdown-content">
-      <p id="show">Show</p>
-      <p id="dontShow">Don't Show</p>
+  <div id="frontPage">
+    <h1 id="logo">LOGO</h1>
+    <div class="dropdown" id="occupants">
+      <h2 id="occupantsButton" class="dropbtn">How Many People?<h3 id="occupantsCount" class="counter"></h3></h2>
+      <div id="soccupantsContent" class="dropdown-content">
+        <p id="oneOccupants">1</p>
+        <p id="twoOccupants">2</p>
+        <p id="threeOccupants">3</p>
+        <p id="fourOccupants">4</p>
+        <p id="fiveOccupants">5</p>
+        <p id="sixOccupants">6</p>
+      </div>
     </div>
+    <!-- <button id="testButton">See your search results</button> -->
+    <!-- <button id="searchButton"><a href="#room1">Search</a></button> -->
+    <a href="#room1" id="searchButton">Search</a>
   </div>
-  <div class="dropdown" id="yesNo">
-    <button id="yesNoButton" class="dropbtn">Yes/No</button>
-    <div id="yesNoContent" class="dropdown-content">
-      <p id="show">Yes</p>
-      <p id="dontShow">No</p>
-    </div>
-  </div>
-  <button id="testButton">See your search results</button>
-  <button id="searchButton">Search</button>
 
   <div class="room" id="room1">
-    <h3>test room 1</h3>
+    <h4 class="roomPrice">$319 per night</h4>
+    <h3 class="roomName">The Halibut Room</h3>
   </div>
   <div class="room" id="room2">
-    <h3>test room 2</h3>
+    <h4 class="roomPrice">$209 per night</h4>
+    <h3 class="roomName">Steelhead Salmon Room</h3>
   </div>
   <div class="room" id="room3">
-    <h3>test room 3</h3>
+    <h4 class="roomPrice">$209 per night</h4>
+    <h3 class="roomName">Sockeye Salmon Room</h3>
   </div>
   <div class="room" id="room4">
-    <h3>test room 4</h3>
+    <h4 class="roomPrice">$229 per night</h4>
+    <h3 class="roomName">Silver Salmon Room</h3>
   </div>
   <div class="room" id="room5">
-    <h3>test room 5</h3>
+    <h4 class="roomPrice">$229 per night</h4>
+    <h3 class="roomName">King Salmon Room</h3>
   </div>
   <div class="room" id="room6">
-    <h3>test room 6</h3>
+    <h4 class="roomPrice">$169 per night</h4>
+    <h3 class="roomName">Pink Salmon Room</h3>
   </div>
 
   <script src="js/script.js"></script>

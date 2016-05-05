@@ -4,21 +4,35 @@ html {
 body {
   height: 2000px;
 }
-.room {
-  background-color: blue;
+#frontPage {
+  height: 100vh;
+  border-bottom: 5px solid red;
+}
+#logo {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  margin: 15vh 0;
+  margin-left: -74.24px;
+  text-align: center;
+  display: inline-block;
+  font-size: 50px;
+  border: 2px solid black;
 }
 
 /*---DROPDOWN MENU---*/
 .dropbtn {
+  display: inline-block;
   background-color: white;
   color: black;
   padding: 16px;
-  font-size: 16px;
+  font-size: 26px;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
 }
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #whitesmoke;
+  background-color: whitesmoke;
 }
 .dropdown {
   position: relative;
@@ -33,18 +47,59 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-#yesNoContent {
-  top: 54px;
-}
 .dropdown-content p {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-
 .dropdown p:hover {background-color: #f1f1f1}
-
 .show {display:block;}
-
 .hide {display:none !important;}
+.counter {
+  display: inline;
+  color: darkblue;
+  font-size: 28px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+#occupantsButton {
+  margin-top: 30vh;
+}
+#searchButton {
+  position: absolute;
+  bottom: 5vh;
+  right: 20px;
+}
+#searchButton {
+  color: white;
+  text-decoration: none;
+  background-color: blue;
+  padding: 20px 35px;
+  border-radius: 100px;
+  font-size: 20px;
+}
+
+/*---ROOM BLOCKS---*/
+.room {
+  background-color: lightblue;
+  height: 150px;
+  margin: 10px 0px;
+  border: solid 2px green;
+}
+.roomPrice {
+  color: black;
+  position: relative;
+  text-align: right;
+  margin: 0px;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+.roomName {
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 95px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+}
