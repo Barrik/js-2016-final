@@ -1,61 +1,116 @@
-console.log("Hello from the JavaScript file");
+console.log("script.js has run.");
 
 var d = document;
 var room = document.getElementsByClassName('room');
 var buttons = document.getElementsByClassName('dropbtn');
 var lists = document.getElementsByClassName('dropdown-content');
+var occupantOptions = d.getElementsByClassName('occupantsOption');
 
+// This is the user's search settings.  This will be changed clientside.  Below are the default values.
 search = {
-  whether: "yes",
   occupants: 1,
-  beds: 1,
 };
 
-room1 = {
-  number: 1,
-  whether: "yes",
-  occupants: 6,
-  beds: 2,
-};
-room2 = {
-  number: 2,
-  whether: "yes",
-  occupants: 2,
-  beds: 1,
-};
-room3 = {
-  number: 3,
-  whether: "yes",
-  occupants: 2,
-  beds: 1,
-};
-room4 = {
-  number: 4,
-  whether: "no",
-  occupants: 4,
-  beds: 2,
-};
-room5 = {
-  number: 5,
-  whether: "no",
-  occupants: 3,
-  beds: 2,
-};
-room6 = {
-  number: 6,
-  whether: "no",
-  occupants: 3,
-  beds: 2,
+// Below are the values for each room.  Edit the values to alter the site.
+var roomValues = [
+  {
+    number: 1,
+    name: "The Halibut Room",
+    beds: {
+      King: 2,
+      Queen: 0,
+      Twin: 0,
+    },
+    whether: "yes",
+    occupants: 6,
+    beds: 2,
+    price: 319,
+  },
+  {
+    number: 2,
+    name: "Steelhead Salmon Room",
+    beds: {
+      King: 1,
+      Queen: 0,
+      Twin: 0,
+    },
+    whether: "yes",
+    occupants: 2,
+    beds: 1,
+    price: 209,
+  },
+  {
+    number: 3,
+    name: "Sockeye Salmon Room",
+    beds: {
+      King: 1,
+      Queen: 0,
+      Twin: 0,
+    },
+    whether: "yes",
+    occupants: 2,
+    beds: 1,
+    price: 209,
+  },
+  {
+    number: 4,
+    name: "Silver Salmon Room",
+    beds: {
+      King: 2,
+      Queen: 0,
+      Twin: 0,
+    },
+    whether: "no",
+    occupants: 4,
+    beds: 2,
+    price: 229,
+  },
+  {
+    number: 5,
+    name: "King Salmon Room",
+    beds: {
+      King: 1,
+      Queen: 0,
+      Twin: 1,
+    },
+    whether: "no",
+    occupants: 3,
+    beds: 2,
+    price: 229,
+  },
+  {
+    number: 6,
+    name: "Pink Salmon Room",
+    beds: {
+      King: 0,
+      Queen: 1,
+      Twin: 1,
+    },
+    whether: "no",
+    occupants: 3,
+    price: 169,
+    beds: 2,
+  },
+];
+
+// ===List Room Name===
+for (var i = 0; i < room.length; i++) {
+  var roomNum = i + 1;
+  d.querySelector('#roomname' + roomNum).innerHTML = roomValues[i].name;
+}
+
+// ===List Room Price===
+for (var i = 0; i < room.length; i++) {
+  var roomNum = i + 1;
+  d.querySelector('#room' + roomNum + 'Price').innerHTML = roomValues[i].price;
 };
 
-
+// ===Toggle Dropdown Menus===
 function toggleLists(num) {
   buttons[num].addEventListener('click', function() {
-    // console.log("You clicked button #" + num);
     lists[num].classList.toggle('show');
   })
 }
-
 for (var i = 0; i < buttons.length; i++) {
   toggleLists(i);
 };
@@ -75,87 +130,39 @@ window.onclick = function(event) {
   }
 }
 
-// d.querySelector('#testButton').addEventListener('click', function() {
-//   console.log(search);
-// });
+// ===Dropdown Meny for Occupants===
+function doOccupantsOptions(arg) {
+  var xx = arg + 1;
+  occupantOptions[arg].addEventListener('click', function() {
+    search.occupants = xx;
+    occupantsCount.innerHTML = xx;
+  });
+};
+for (var i = 0; i < occupantOptions.length; i++) {
+  doOccupantsOptions(i);
+};
 
 
-// ~~~~~OCCUPANTS
-var occupantsCount = d.querySelector('#occupantsCount')
-d.querySelector('#oneOccupants').addEventListener('click', function() {
-  search.occupants = 1;
-  occupantsCount.innerHTML = 1;
-});
-d.querySelector('#twoOccupants').addEventListener('click', function() {
-  search.occupants = 2;
-  occupantsCount.innerHTML = 2;
-});
-d.querySelector('#threeOccupants').addEventListener('click', function() {
-  search.occupants = 3;
-  occupantsCount.innerHTML = 3;
-});
-d.querySelector('#fourOccupants').addEventListener('click', function() {
-  search.occupants = 4;
-  occupantsCount.innerHTML = 4;
-});
-d.querySelector('#fiveOccupants').addEventListener('click', function() {
-  search.occupants = 5;
-  occupantsCount.innerHTML = 5;
-});
-d.querySelector('#sixOccupants').addEventListener('click', function() {
-  search.occupants = 6;
-  occupantsCount.innerHTML = 6;
-});
-
-
-// ~~~~~YES/NO
-// d.querySelector('#yes').addEventListener('click', function() {
-//   search.whether = "yes";
-// });
-// d.querySelector('#no').addEventListener('click', function() {
-//   search.whether = "no";
-// });
-
-
-// ~~~~~SEARCH
+// ==========SEARCH==========
 function show(x) {
-  d.querySelector(x).classList.add('show');
-  d.querySelector(x).classList.remove('hide');
+  d.querySelector('#room' + x).classList.add('show');
+  d.querySelector('#room' + x).classList.remove('hide');
 }
 function hide(x) {
-  d.querySelector(x).classList.add('hide');
-  d.querySelector(x).classList.remove('show');
+  d.querySelector('#room' + x).classList.add('hide');
+  d.querySelector('#room' + x).classList.remove('show');
 }
 
+function doSearch(room) {
+  if (search.occupants <= roomValues[room].occupants) {
+    show(roomValues[room].number);
+  } else {
+    hide(roomValues[room].number);
+  };
+};
+
 d.querySelector('#searchButton').addEventListener('click', function() {
-  if (search.occupants <= room1.occupants) {
-    show('#room1')
-  } else {
-    hide('#room1')
-  };
-  if (search.occupants <= room2.occupants) {
-    show('#room2')
-  } else {
-    hide('#room2')
-  };
-  if (search.occupants <= room3.occupants) {
-    show('#room3')
-  } else {
-    hide('#room3')
-  };
-  if (search.occupants <= room4.occupants) {
-    show('#room4')
-  } else {
-    hide('#room4')
-  };
-  if (search.occupants <= room5.occupants) {
-    show('#room5')
-  } else {
-    hide('#room5')
-  };
-  if (search.occupants <= room6.occupants) {
-    show('#room6')
-  } else {
-    hide('#room6')
+  for (var i = 0; i < roomValues.length; i++) {
+    doSearch(i);
   };
 });
