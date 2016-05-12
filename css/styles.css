@@ -4,6 +4,13 @@ html {
 body {
   height: 2000px;
 }
+a {
+  text-decoration: none;
+  color: black !important;
+}
+a:hover {
+  text-decoration: none;
+}
 #frontPage {
   height: 100vh;
   border-bottom: 5px solid red;
